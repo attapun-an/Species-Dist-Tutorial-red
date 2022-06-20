@@ -1,15 +1,14 @@
 # 01-Species Dist Modelling using red by attapun-an
 
-# set wd ----
-setwd("D:/Github/IngaTutorial")
-
-# load packages (part 1) ----
+# load packages ----
+library(red)
+library(rJava)
+library(raster)
 library(dplyr)
 library(tidyr)
-library(ggplot2)
-library(rworldmap)
 
-# load and explore data ----
+# Import data ----
+
 # load data from data folder
 Data_Inga_raw <- read.delim("data/0031652-190415153152247.csv")
 
@@ -25,32 +24,41 @@ Data_Inga <- Data_Inga_raw %>%
   group_by(species) %>% 
   drop_na() %>%
   filter(n()>15) %>%
-  ungroup()
+  ungroup() %>% 
+  select(-c(genus))
 
 Data_Inga_sample <- Data_Inga %>% 
   filter(species %in% c("Inga acrocephala", "Inga chocoensis", "Inga venusta"))
 
+Data_Inga_sample <- as.data.frame(Data_Inga_sample)
+
+Data_Inga_SS <- Data_Inga_sample %>% 
+  group_by(species) %>% 
+  summarise(count = n())
+
+Data_Inga_SS
+
+# import rasters ----
+
+Rst_Env <- stack("data/processed/rst_env.tif")
+Rst_Elev <- raster("data/processed/rst_elev.tif")
+
+plot(Rst_Env)
+Rst_Env
 
 
-# test plot ----
-# import world map
-world <- getMap(resolution = "low")
+# SDM ----
+red::map.easy(longlat = Data_Inga_sample, layers = Rst_Env,
+              move = TRUE, dem = Rst_Elev, mapoption = "sdm",
+              runs = 0)
 
+Inga_a <- raster("outputs/SDM/Inga acrocephala.asc")
+plot(Inga_a)
 
-(Plt_Pre <- ggplot()+
-  geom_point(data = Data_Inga_sample,
-             aes(x = Longitude,
-                 y = Latitude,
-                 colour = species))+
-  geom_polygon(data = world, 
-               aes(x = long, y = lat, group = group),
-               fill = NA, colour = "black")+
-  coord_quickmap()+  # Prevents stretching when resizing
-  theme_bw()+
-  xlim(-100, -45)+
-  ylim(-25, 25)
-)
+# ESM ----
+red::map.easy(longlat = Data_Inga_sample, layers = Rst_Env,
+              move = FALSE, dem = Rst_Elev, mapoption = "sdm",
+              runs = 5, subset = 2)
 
-# PART TWO: SDM ----
-
-
+Inga_a <- raster("outputs/ESM/Inga acrocephala.asc")
+plot(Inga_a)
