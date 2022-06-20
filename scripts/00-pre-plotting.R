@@ -1,6 +1,7 @@
 # 00-Species Dist Modelling using red by attapun-an
 
 # set wd ----
+# replace this with the link to your folder here
 setwd("D:/Github/IngaTutorial")
 
 # load packages (part 1) ----

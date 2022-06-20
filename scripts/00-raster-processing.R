@@ -1,6 +1,7 @@
 # raster manipulation
 
 # set wd ----
+# replace this with the link to your folder here
 setwd("D:/Github/IngaTutorial")
 
 # load packages ----
