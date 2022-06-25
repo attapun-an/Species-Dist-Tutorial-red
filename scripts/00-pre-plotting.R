@@ -58,3 +58,4 @@ world <- getMap(resolution = "low")
     xlim(-100, -45)+
     ylim(-25, 25)
 )
+

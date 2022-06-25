@@ -11,6 +11,8 @@ library(raster)
 library(dplyr)
 library(tidyr)
 
+
+
 # Import data ----
 
 # load data from data folder
@@ -25,11 +27,14 @@ Data_Inga <- Data_Inga_raw %>%
   select(species, Longitude = decimalLongitude,
          Latitude = decimalLatitude, genus) %>% 
   filter(genus == "Inga") %>% 
-  group_by(species) %>% 
   drop_na() %>%
+  group_by(species) %>% 
   filter(n()>15) %>%
   ungroup() %>% 
   select(-c(genus))
+
+Data_Inga
+unique(Data_Inga$species)
 
 Data_Inga_sample <- Data_Inga %>% 
   filter(species %in% c("Inga acrocephala", "Inga chocoensis", "Inga venusta"))
@@ -48,19 +53,22 @@ Rst_Env <- stack("data/processed/rst_env.tif")
 Rst_Elev <- raster("data/processed/rst_elev.tif")
 
 plot(Rst_Env)
+plot(Rst_Elev)
 Rst_Env
+Rst_Elev
+
 
 
 # SDM ----
-red::map.easy(longlat = Data_Inga_sample, layers = Rst_Env,
-              move = TRUE, dem = Rst_Elev, mapoption = "sdm",
+map.easy(longlat = Data_Inga_sample, layers = Rst_Env,
+              move = FALSE, dem = Rst_Elev, mapoption = "sdm",
               runs = 0)
 
 Inga_a <- raster("outputs/SDM/Inga acrocephala.asc")
 plot(Inga_a)
 
 # ESM ----
-red::map.easy(longlat = Data_Inga_sample, layers = Rst_Env,
+map.easy(longlat = Data_Inga_sample, layers = Rst_Env,
               move = FALSE, dem = Rst_Elev, mapoption = "sdm",
               runs = 5, subset = 2)
 
