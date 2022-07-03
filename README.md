@@ -15,7 +15,8 @@ species distribution model (top), occurrence data (bottom left), spatial data (b
 Note: this tutorial uses relative file paths, check here if you need a tutorial https://ourcodingclub.github.io/tutorials/intro-to-r/
 
 #### Video Tutorial Link
-
+Main tutorial https://youtu.be/8RPDoVRr1Hw
+Raster processing Tutorial https://youtu.be/UOO0VDwrLZc
 
 #### Useful Links
 - Red documentation https://cran.r-project.org/web/packages/red/red.pdf
