@@ -1,4 +1,4 @@
-## SDM using red for R IngaTutorial
+## SDM using red for R
 coded by attapun-an (attapunanivat@gmail.com)
 
 #### Description
@@ -15,7 +15,7 @@ species distribution model (top), occurrence data (bottom left), spatial data (b
 Note: this tutorial uses relative file paths, check here if you need a tutorial https://ourcodingclub.github.io/tutorials/intro-to-r/
 
 #### Video Tutorial Link
-Main tutorial https://youtu.be/8RPDoVRr1Hw
+Main tutorial https://youtu.be/8RPDoVRr1Hw  
 Raster processing Tutorial https://youtu.be/UOO0VDwrLZc
 
 #### Useful Links
