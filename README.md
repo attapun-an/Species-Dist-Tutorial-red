@@ -2,21 +2,14 @@
 coded by attapun-an (attapunanivat@gmail.com)
 
 #### Description
-Species distribution modelling predicts where a species is likely to occur from occurrence data (where the species was observed) and spatial/environmental data
-
-This is the code used in a video tutorial (linked below)
+Species distribution modelling predicts where a species is likely to occur from occurrence data (where the species was observed) and spatial/environmental data. 
+This was an attempt to show what I did during my dissertation without sharing the repository which contains too much suicidal ideation in the commit messages, it was supposed to be accompanied by videos which have since been taken down because I only know how to get the model working, not it's assumption or nuances. 
 
 ![species distribution model](/images/SDM.jpg)
 <img src="/images/occurrence.jpg" alt="occurrence data" width="49%"/>
 <img src="/images/env.jpg" alt="spatial data" width="50%"/>
 
 species distribution model (top), occurrence data (bottom left), spatial data (bottom right)
-
-Note: this tutorial uses relative file paths, check here if you need a tutorial https://ourcodingclub.github.io/tutorials/intro-to-r/
-
-#### Video Tutorial Link
-Main tutorial https://youtu.be/8RPDoVRr1Hw  
-Raster processing Tutorial https://youtu.be/UOO0VDwrLZc
 
 #### Useful Links
 - Red documentation https://cran.r-project.org/web/packages/red/red.pdf
